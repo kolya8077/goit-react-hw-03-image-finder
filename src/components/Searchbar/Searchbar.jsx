@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { MdSearch } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import {
   Searchbar,
   SearchForm,
@@ -9,28 +11,34 @@ import {
 } from 'components/Searchbar/searchbar.style.jsx';
 
 class Searchbars extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func,
+  };
+
   state = {
-    name: '',
+    query: '',
   };
 
   handleChange = e => {
-    this.setState({ name: e.target.value });
+    this.setState({ query: e.currentTarget.value });
   };
 
-  handleSubmit = evt => {
-    evt.preventDefault();
-    console.log(`Signed up as: ${this.state.name}`);
-    this.props.onSubmit(this.state);
+  handleSubmit = e => {
+    e.preventDefault();
+    if (this.state.query.trim() === '') {
+      toast.warn('Please specify your query!');
+      return;
+    }
+    this.props.onSubmit(this.state.query);
     this.reset();
   };
 
   reset = () => {
-    this.setState({
-      name: '',
-    });
+    this.setState({ query: '' });
   };
 
   render() {
+    const {query} = this.state
     return (
       <Searchbar>
         <SearchForm onSubmit={this.handleSubmit}>
@@ -41,11 +49,11 @@ class Searchbars extends Component {
 
           <SearchFormInput
             type="text"
-            name="search"
+            name="query"
             autocomplete="off"
             autoFocus={true}
             placeholder="Search images and photos"
-            value={this.state.name}
+            value={query}
             onChange={this.handleChange}
           />
         </SearchForm>
