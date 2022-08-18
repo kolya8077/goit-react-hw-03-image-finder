@@ -1,14 +1,23 @@
 import PropTypes from 'prop-types'
+import {
+  GalleryItem,
+  GalleryItemImg,
+} from 'components/ImageGalleryItem/ImageGalleryItem.style';
 
-export const ImageGalleryItem = ({ webURL, imageURL, tags, onClick }) => (
-  <li className="gallery-item" onClick={() => {onClick(imageURL);}}>
-    <img src={webURL} alt={tags} />
-  </li>
+export const ImageGalleryItem = ({ webformatURL, largeImageURL, tags, onClick }) => (
+  <GalleryItem
+    className="gallery-item"
+    onClick={() => {
+      onClick(largeImageURL);
+    }}
+  >
+    <GalleryItemImg src={webformatURL} alt={tags} />
+  </GalleryItem>
 );
 
 ImageGalleryItem.propTypes = {
-  webURL: PropTypes.string.isRequired,
-  imageURL: PropTypes.string.isRequired,
+  webformatURL: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
   tags: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };

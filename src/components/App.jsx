@@ -52,11 +52,11 @@ export class App extends Component {
           toast.info("You've reached the end of search results.");
         }
 
-        const data = hits.map(({ id, webURL, imageURL, tags }) => {
+        const data = hits.map(({ id, webformatURL, largeImageURL, tags }) => {
           return {
             id,
-            webURL,
-            imageURL,
+            webformatURL,
+            largeImageURL,
             tags,
           };
         });
@@ -86,11 +86,11 @@ export class App extends Component {
     }));
   };
 
-  toggleModal = imageURL => {
+  toggleModal = largeImageURL => {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
     }));
-    this.setState({ imageURL: imageURL });
+    this.setState({ largeImageURL: largeImageURL });
   };
 
   render() {

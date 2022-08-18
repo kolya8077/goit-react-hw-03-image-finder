@@ -1,9 +1,10 @@
 import { ThreeDots } from 'react-loader-spinner';
+import { LoaderEl } from './loader.style';
 
 export const Loader = () => {
   return (
-    <div>
+    <LoaderEl>
       <ThreeDots />
-    </div>
+    </LoaderEl>
   )
 }

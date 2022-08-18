@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
+import {Overlay, ModalEl} from 'components/Modal/modal.style'
 
 class Modal extends Component {
   static propTypes = {
@@ -31,9 +32,9 @@ class Modal extends Component {
 
   render() {
     return createPortal(
-      <div className="overlay" onClick={this.handleBackdropClick}>
-        <div className="modal">{this.props.children}</div>
-      </div>
+      <Overlay className="overlay" onClick={this.handleBackdropClick}>
+        <ModalEl className="modal">{this.props.children}</ModalEl>
+      </Overlay>
     );
   }
 }

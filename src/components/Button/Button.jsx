@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
+import { ButtonEl } from './button.style';
 
 export const Button = ({ children, onClick }) => { 
-  <Button type='button' onClick={onClick}>{ children }</Button>
+  <ButtonEl type='button' onClick={onClick}>{ children }</ButtonEl>
 };
 
 Button.propTypes = {
