@@ -1,11 +1,16 @@
-import PropTypes from 'prop-types'
-import { ButtonEl } from './button.style';
+import PropTypes from 'prop-types';
+import { ButtonEl } from 'components/Button/button.style';
 
-export const Button = ({ children, onClick }) => { 
-  <ButtonEl type='button' onClick={onClick}>{ children }</ButtonEl>
-};
+const Button = ({ children, onClick }) => (
+
+  <ButtonEl type="button" onClick={onClick}>
+    {children}
+  </ButtonEl>
+    );
 
 Button.propTypes = {
-  children: PropTypes.node,
-  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
+
+export default Button;

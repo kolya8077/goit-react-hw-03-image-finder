@@ -3,11 +3,12 @@ import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import {Overlay, ModalEl} from 'components/Modal/modal.style'
 
+const modalRoot = document.querySelector('#modal-root');
+
 class Modal extends Component {
   static propTypes = {
-    onClick: PropTypes.func,
-    onClose: PropTypes.func,
-    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -34,7 +35,8 @@ class Modal extends Component {
     return createPortal(
       <Overlay className="overlay" onClick={this.handleBackdropClick}>
         <ModalEl className="modal">{this.props.children}</ModalEl>
-      </Overlay>
+      </Overlay>,
+      modalRoot
     );
   }
 }
