@@ -12,7 +12,7 @@ import {
 
 class Searchbars extends Component {
   static propTypes = {
-    onSubmit: PropTypes.func,
+    onSubmit: PropTypes.func.isRequired,
   };
 
   state = {
@@ -38,7 +38,7 @@ class Searchbars extends Component {
   };
 
   render() {
-    const {query} = this.state
+    const { query } = this.state;
     return (
       <Searchbar>
         <SearchForm onSubmit={this.handleSubmit}>
